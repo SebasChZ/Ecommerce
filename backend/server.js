@@ -24,7 +24,14 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 // Use CORS middleware with the defined options
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
+app.use(cors(
+  {origin: "http://deploy-mern-1whq.vercel.app", // Replace with your frontend application’s URL
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  credentials: true,
+  optionsSuccessStatus: 204,}
+  
+))
 
 //App usa morgan dev
 app.use(morgan("dev"));
